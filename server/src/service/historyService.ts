@@ -43,7 +43,7 @@ class HistoryService {
     const historyDB = await JSON.parse(await this.read());
     const indexOnDB: number = historyDB.indexOf(historyDB.filter((element: any) => element.id === id)[0]);
     console.log(historyDB);
-    historyDB.splice(indexOnDB);
+    historyDB.splice(indexOnDB, 1);
     console.log(historyDB);
 
     fs.writeFileSync("./db/searchHistory.json", JSON.stringify(historyDB));
