@@ -81,7 +81,7 @@ class WeatherService {
   }
   // TODO: Build parseCurrentWeather method
   private parseCurrentWeather(response: any) {
-    return new Weather(this.cityName, new Date(response.dt * 1000).toDateString(), response.weather[0].icon, response.weather[0].description, response.main.temp, response.main.humidity, response.wind.speed);
+    return new Weather(this.cityName, new Date(response.dt * 1000).toDateString(), response.weather[0].icon, response.weather[0].description,  Math.round(((response.main.temp - 273.15) * (9/5)) + 32), response.main.humidity, response.wind.speed);
   }
   // TODO: Complete buildForecastArray method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]) {
